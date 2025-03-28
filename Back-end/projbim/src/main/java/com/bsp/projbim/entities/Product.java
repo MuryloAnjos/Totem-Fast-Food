@@ -31,7 +31,7 @@ public class Product {
 	private String pathImage;
 	
 	@OneToMany(mappedBy = "product")
-	private List<OrderItem> itens = new ArrayList<>();
+	private List<OrderItem> items = new ArrayList<>();
 	
 	public Product() {
 		
@@ -86,7 +86,7 @@ public class Product {
 	}
 
 	public List<OrderItem> getItens() {
-		return itens;
+		return items;
 	}
 
 	
