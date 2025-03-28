@@ -14,9 +14,12 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // ESSE CAMPO É OBRIGATÓRIO E DEVE TER O NOME "product"
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+    
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Orders order;
 
 }

@@ -1,5 +1,5 @@
 package com.bsp.projbim.entities;
 
-public class Order {
+public class OrderItemPK {
 
 }
