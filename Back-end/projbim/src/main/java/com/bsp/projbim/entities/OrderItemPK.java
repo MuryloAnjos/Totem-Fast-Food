@@ -1,55 +1,60 @@
 package com.bsp.projbim.entities;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 @Embeddable
-public class OrderItemPK {
+public class OrderItemPK implements Serializable {
 	
-	@ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
-    
-    @ManyToOne //Muitos registros para um
-    @JoinColumn(name = "order_id")
-    private Orders order;
-    
-    
-    public OrderItemPK() {
-    	
-    }
-
-
-	public OrderItemPK(Product product, Orders order) {
-		this.product = product;
-		this.order = order;
+	private Long orderId;
+	
+	private Long productId;
+	
+	public OrderItemPK() {
+		
 	}
 
-
-	public Product getProduct() {
-		return product;
+	public OrderItemPK(Long orderId, Long productId) {
+		this.orderId = orderId;
+		this.productId = productId;
 	}
 
-
-	public void setProduct(Product product) {
-		this.product = product;
+	public Long getOrderId() {
+		return orderId;
 	}
 
-
-	public Orders getOrder() {
-		return order;
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
 	}
 
+	public Long getProductId() {
+		return productId;
+	}
 
-	public void setOrder(Orders order) {
-		this.order = order;
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(orderId, productId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OrderItemPK other = (OrderItemPK) obj;
+		return Objects.equals(orderId, other.orderId) && Objects.equals(productId, other.productId);
 	}
 	
 	
-    
-    
-    
-
+	
 
 }
